@@ -14,6 +14,7 @@ import Signup from './src/signUp';
 import ProductList from './src/products';
 import OrderSummary from './src/summary';
 import PaymentScreen from './src/paymentScreen';
+import OrderConfirmationScreen from './src/orderConfirmation';
 
 const Stack = createStackNavigator();
 
@@ -32,6 +33,7 @@ const App = () => {
         <Stack.Screen name="ProductList" options={{ headerShown: false }} component={ProductList} />
         <Stack.Screen name="OrderSummary" options={{ headerShown: false }} component={OrderSummary} />
         <Stack.Screen name="PaymentScreen" options={{ headerShown: false }} component={PaymentScreen} />
+        <Stack.Screen name="OrderConfirmationScreen" options={{ headerShown: false }} component={OrderConfirmationScreen} />
 
       </Stack.Navigator>
     </NavigationContainer>
