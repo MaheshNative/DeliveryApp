@@ -12,9 +12,11 @@ import Contact from './src/contact';
 import Home from './src/home';
 import Signup from './src/signUp';
 import ProductList from './src/products';
-import OrderSummary from './src/summary';
-import PaymentScreen from './src/paymentScreen';
 import OrderConfirmationScreen from './src/orderConfirmation';
+import OrderSummary from './src/summary';
+import PaymentOptions from './src/paymentOptions';
+import OrderConfirmation from './src/orderConfirmation';
+
 
 const Stack = createStackNavigator();
 
@@ -32,9 +34,8 @@ const App = () => {
         <Stack.Screen name="Signup" options={{ headerShown: false }} component={Signup} />
         <Stack.Screen name="ProductList" options={{ headerShown: false }} component={ProductList} />
         <Stack.Screen name="OrderSummary" options={{ headerShown: false }} component={OrderSummary} />
-        <Stack.Screen name="PaymentScreen" options={{ headerShown: false }} component={PaymentScreen} />
-        <Stack.Screen name="OrderConfirmationScreen" options={{ headerShown: false }} component={OrderConfirmationScreen} />
-
+        <Stack.Screen name="PaymentOptions" options={{ headerShown: false }} component={PaymentOptions} />
+        <Stack.Screen name="OrderConfirmation" options={{ headerShown: false }} component={OrderConfirmation} />
       </Stack.Navigator>
     </NavigationContainer>
   );

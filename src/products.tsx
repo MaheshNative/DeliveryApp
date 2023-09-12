@@ -6,13 +6,14 @@ import { useNavigation, NavigationProp } from '@react-navigation/native';
 type RootStackParamList = {
     OrderSummary: undefined;
 };
+
 type SummaryScreenParams = {
     totalMangoesCount: number;
     totalTomatoesCount: number;
 };
 
-const MANGO_PRICE = 10; // Price per mango
-const TOMATOES_PRICE = 20; // Price per tomato
+const MANGO_PRICE = 10;
+const TOMATOES_PRICE = 20;
 
 const Stack = createStackNavigator<RootStackParamList>();
 

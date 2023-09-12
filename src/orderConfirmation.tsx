@@ -1,25 +1,26 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const OrderConfirmationScreen: React.FC = () => {
+const OrderConfirmation: React.FC = () => {
     return (
         <View style={styles.container}>
-            <Text style={styles.head}>Order Confirmation</Text>
-            <Text>Your order has been confirmed!</Text>
+            <Text style={styles.title}>Order Confirmed!</Text>
+            <Text>Your order has been successfully placed.</Text>
         </View>
     );
 };
 
-export default OrderConfirmationScreen;
-
 const styles = StyleSheet.create({
-    head: {
-        fontSize: 15,
-        fontWeight: 'bold',
-    },
     container: {
-        justifyContent: 'center',
+        flex: 1,
         alignItems: 'center',
-        margin: 10,
+        justifyContent: 'center',
+    },
+    title: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginBottom: 20,
     },
 });
+
+export default OrderConfirmation;

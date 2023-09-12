@@ -1,49 +1,61 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { RouteProp, useRoute } from '@react-navigation/native';
+import { useNavigation, NavigationProp } from '@react-navigation/native';
 
-type OrderSummaryProps = {
-    route: {
-        params: {
-            totalMangoesCount: number;
-            totalTomatoesCount: number;
-            mangoPrice: number;
-            tomatoesPrice: number;
-        };
-    };
+type RootStackParamList = any
+
+type OrderSummaryRouteParams = {
+    totalMangoesCount: number;
+    totalTomatoesCount: number;
+    mangoPrice: number;
+    tomatoesPrice: number;
+    PaymentOptions: undefined;
 };
 
-const OrderSummary: React.FC<OrderSummaryProps> = ({ route }) => {
-    const { totalMangoesCount, totalTomatoesCount, mangoPrice, tomatoesPrice } = route.params;
+type OrderSummaryRouteProp = RouteProp<RootStackParamList, 'OrderSummary'>;
+
+const OrderSummary: React.FC = () => {
+    const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+    const route = useRoute<OrderSummaryRouteProp>();
+    const params = route.params as OrderSummaryRouteParams;
+
+    const totalMangoesCount = params.totalMangoesCount;
+    const totalTomatoesCount = params.totalTomatoesCount;
+    const mangoPrice = params.mangoPrice;
+    const tomatoesPrice = params.tomatoesPrice;
 
     const totalPrice = totalMangoesCount * mangoPrice + totalTomatoesCount * tomatoesPrice;
-    const navigation = useNavigation();
 
-    const handlePaymentPress = () => {
-        navigation.navigate('PaymentScreen');
+    const handleProceedToPayment = () => {
+        navigation.navigate('PaymentOptions');
     };
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.header}>Order Summary</Text>
+        <View>
             <Text>Total Mangoes: {totalMangoesCount}</Text>
             <Text>Total Tomatoes: {totalTomatoesCount}</Text>
             <Text>Total Price: ${totalPrice}</Text>
-            <Button title="Proceed to Payment" onPress={handlePaymentPress} />
+            <TouchableOpacity onPress={handleProceedToPayment}>
+                <View style={styles.proceedButton}>
+                    <Text style={styles.buttonText}>Proceed to Payment</Text>
+                </View>
+            </TouchableOpacity>
         </View>
     );
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 20,
-        backgroundColor: '#fff',
+    proceedButton: {
+        backgroundColor: 'blue',
+        padding: 10,
+        marginTop: 20,
+        borderRadius: 5,
     },
-    header: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        marginBottom: 10,
+    buttonText: {
+        color: 'white',
+        textAlign: 'center',
+        fontSize: 18,
     },
 });
 
