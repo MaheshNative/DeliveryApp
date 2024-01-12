@@ -24,8 +24,8 @@ const Login = () => {
             navigation.navigate('ProductList');
             console.log('Login successful');
         } else {
-            Alert.alert("Invalid Username or Password")
-            console.log("Login Failed")
+            Alert.alert("Invalid Username or Password!!")
+            console.log("Login Failed!!")
         }
         setUsername('');
         setPassword('');
